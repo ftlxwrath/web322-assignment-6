@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="/css/main.css" />
+</head>
+<body>
+    <%- include('partials/navbar', {page: '/login' })%>
+    <div class="container mx-auto mt-8">
+        <div class="hero bg-base-200 rounded-lg p-6">
+            <div class="hero-content text-center ">
+              <div class="max-w-md">
+                <h1 class="text-5xl font-bold">Log In</h1>
+      
+                <p class="py-6">Please provide your credentials below</p>
+      
+              </div>
+            </div>
+        </div>
+        <br>
+        <form action="/login" method="POST">
+            <div class="mb-4">
+                <label for="userName" class="block mb-2">User Name</label>
+                <input type="text" id="userName" name="userName" placeholder="User Name" required class="mt-1 p-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:border-blue-500">
+            </div>
+            <div class="mb-4">
+                <label for="password" class="block mb-2">Password</label>
+                <input type="password" id="password" name="password" placeholder="Password" required class="mt-1 p-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:border-blue-500">
+            </div>
+            <input type="submit" class="bg-green-500 text-white p-2 rounded-md cursor-pointer hover:bg-green-600 focus:outline-none focus:ring focus:border-blue-500" value="Login">
+        </form>
+
+        <% if (locals.errorMessage) { %>
+            <div class="alert alert-error mt-4">
+                <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                <span><%= errorMessage %></span>
+            </div>
+        <% } %>
+    </div>
+</body>
+</html>

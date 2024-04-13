@@ -1,0 +1,57 @@
+<!-- register.ejs -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <link rel="stylesheet" href="/css/main.css" />
+</head>
+<body>
+    <%- include('partials/navbar', {page: '/register' }) %>
+    <div class="container mx-auto mt-8">
+        <% if (!successMessage) { %>
+            <!-- Register form -->
+            <h2 class="text-2xl font-bold mb-4">Register</h2>
+            <form action="/register" method="POST">
+                <div class="mb-4">
+                    <label for="userName" class="text-sm font-semibold text-gray-600">User Name</label>
+                    <input type="text" id="userName" name="userName" placeholder="User Name" required class="mt-1 p-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:border-blue-500">
+                </div>
+                <div class="mb-4">
+                    <label for="password" class="text-sm font-semibold text-gray-600">Password</label>
+                    <input type="password" id="password" name="password" placeholder="Password" required class="mt-1 p-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:border-blue-500">
+                </div>
+                <div class="mb-4">
+                    <label for="password2" class="text-sm font-semibold text-gray-600">Confirm Password</label>
+                    <input type="password" id="password2" name="password2" placeholder="Confirm Password" required class="mt-1 p-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:border-blue-500">
+                </div>
+                <div class="mb-4">
+                    <label for="email" class="text-sm font-semibold text-gray-600">Email Address</label>
+                    <input type="email" id="email" name="email" placeholder="Email Address" required class="mt-1 p-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:border-blue-500">
+                </div>
+                <button type="submit" class="bg-green-500 text-white p-2 rounded-md cursor-pointer hover:bg-green-600 focus:outline-none focus:ring focus:border-blue-500">Register</button>
+            </form>
+
+            <!-- Error output -->
+            <% if (errorMessage) { %>
+                <div class="alert alert-error mt-4">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                    <span><%= errorMessage %></span>
+                </div>
+            <% } %>
+        <% } else { %>
+            <!-- Success message -->
+            <div class="alert mt-4">
+                <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                <span><%= successMessage %></span>
+            </div>
+            <br />
+            <a href="/login" class="btn btn-success">
+                Proceed to Log in
+            </a>
+        <% } %>
+    </div>
+</body>
+</html>
