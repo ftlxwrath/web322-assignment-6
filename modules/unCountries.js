@@ -7,8 +7,8 @@ require('dotenv').config();
 const Sequelize = require('sequelize');
 
 // country up sequelize to point to our postgres database
-let sequelize = new Sequelize(process.env.DB_DATABASE, process.env.DB_USER, process.env.DB_PASSWORD, {
-  host: process.env.DB_HOST,
+let sequelize = new Sequelize("neondb","neondb_owner" ,"mD6UgspL9OFR", {
+  host: "ep-dark-meadow-a51kqll9.us-east-2.aws.neon.tech",
   dialect: 'postgres',
   port: 5432,
   dialectOptions: {
